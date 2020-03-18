@@ -1,1 +1,1 @@
-# -Kharkiv_DevOps_ext_2019_project
+# Kharkiv_DevOps_ext_2019_project
