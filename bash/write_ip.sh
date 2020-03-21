@@ -1,0 +1,1 @@
+terraform output | sudo grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' | sudo tee /etc/ansible/hosts

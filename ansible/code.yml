@@ -1,0 +1,17 @@
+- name: push code
+  hosts: all
+  remote_user: benox133
+  become: true
+  become_method: sudo
+  become_user: root
+  vars:
+    newCode: '/var/www/html/Kharkiv_DevOps_ext_2019_project/index.html'
+ 
+  tasks:
+        - name: push fresh code to index.html
+          template:
+            src: "{{ newCode }}"
+            dest: /var/www/html/index.html
+            owner: root
+            group: root
+            mode: 0644

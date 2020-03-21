@@ -1,0 +1,29 @@
+- name: install httpd
+  hosts: all
+  remote_user: benox133
+  become: true
+  become_method: sudo
+  become_user: root
+  vars:
+    templateSource: '/home/benox133/templates/index.j2'
+ 
+  tasks:
+        - name:  install httpd
+          yum:
+            name: httpd
+            state: present
+         
+        - name: httpd template for index.html
+          template:
+            src: "{{ templateSource }}"
+            dest: /var/www/html/index.html
+            owner: root
+            group: root
+            mode: 0644
+          notify: restart httpd
+  handlers:
+        - name: restart httpd
+          service:
+                name: httpd
+                enabled: yes
+                state: restarted
