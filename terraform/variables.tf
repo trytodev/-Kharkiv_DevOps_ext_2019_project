@@ -1,12 +1,18 @@
 variable "project" {
-  description = "fifth-battery-268810"
+  type = string
+  default = "hardy-pattern-305121"
+  description = "hardy-pattern-305121"
 }
 
 variable "region" {
+  type = string
+  default = "us-central1"
   description = "Region"
 }
 
 variable "zone" {
+  type = string
+  default = "us-central1-a"
   description = "Zone"
 }
 
@@ -21,5 +27,5 @@ variable "disk_image" {
 }
 
 variable "count-vm" {
-  default     = "3"
+  default     = "1"
 }

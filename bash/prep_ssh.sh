@@ -1,2 +1,2 @@
 eval `ssh-agent -s`
-ssh-add ~/.ssh/benox133
+ssh-add ~/.ssh/koin

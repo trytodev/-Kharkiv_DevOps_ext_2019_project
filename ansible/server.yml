@@ -1,11 +1,11 @@
 - name: install httpd
   hosts: all
-  remote_user: benox133
+  remote_user: koin
   become: true
   become_method: sudo
   become_user: root
   vars:
-    templateSource: '/home/benox133/templates/index.j2'
+    templateSource: '/home/koin/templates/index.j2'
  
   tasks:
         - name:  install httpd

@@ -1,8 +1,8 @@
 provider "google" {
-  credentials = "/home/benox133/secure/cred.json"
-  project = "${var.project}"
-  region  = "${var.region}"
-  zone    = "${var.zone}"
+  credentials = "/home/koin/credentials/main.json"
+  project = var.project
+  region  = var.region
+  zone    = var.zone
 }
 
 resource "google_compute_instance" "vm_instance-" {
@@ -12,7 +12,7 @@ resource "google_compute_instance" "vm_instance-" {
 
   boot_disk {
     initialize_params {
-      image = "${var.disk_image}"
+      image = var.disk_image
     }
   }
 
@@ -22,4 +22,29 @@ resource "google_compute_instance" "vm_instance-" {
     access_config {
     }
   }
+
+  provisioner "file" {
+    source      = "~/Kharkiv_DevOps_ext_2019_project/start.sh"
+    destination = "~/script.sh"
+ 
+    connection {
+        type = "ssh"
+	user = "koin"
+	private_key = (file("~/.ssh/main_koin"))
+	host = "terraform-instance-${count.index + 1}"
+   }
+ }
+
+  provisioner "remote-exec" {
+    inline = [
+	"sudo chmod +x ~/script.sh",
+	"sudo sh ~/script.sh"
+]
+      connection {
+        type = "ssh"
+        user = "koin"
+        private_key = (file("~/.ssh/main_koin")) 
+	host = "terraform-instance-${count.index + 1}"
+ }
+}
 }

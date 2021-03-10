@@ -1,6 +1,6 @@
 - name: push code
   hosts: all
-  remote_user: benox133
+  remote_user: koin
   become: true
   become_method: sudo
   become_user: root
