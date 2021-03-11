@@ -57,7 +57,15 @@ cd templates
 
 
 
+/ansible
+remote_user = юзер для логина в систему по ключам
 
+vars templateSource - линк на файл для первичной загрузки на сервера
+
+template for index.html - загрузка файла из vars по указанному пути
+
+start.sh - стартовый скрипт для настройки подключения по логину через ssh и установки git'а, php и рестарта httpd
+Стартовый скрипт можно запустить либо через метадату GCP, либо через terraform, provisioner "file" с указанием connection + provisioner "remote-exec"
 
 
 Что можно улучшить.
